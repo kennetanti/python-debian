@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:2
 
 RUN curl -sSL https://github.com/openfaas/faas/releases/download/0.7.9/fwatchdog > /usr/bin/fwatchdog \
     && chmod +x /usr/bin/fwatchdog
@@ -19,7 +19,7 @@ COPY function           function
 
 WORKDIR /root/
 
-ENV fprocess="python3 index.py"
+ENV fprocess="python index.py"
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
 
